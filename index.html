@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>West Electric, LLC | Licensed Electrician | New Milford & Newtown, CT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a5c;
+            --primary-dark: #0f2440;
+            --accent: #f5a623;
+            --accent-dark: #e09410;
+            --light: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --gradient: linear-gradient(135deg, #1a3a5c 0%, #0f2440 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 36, 64, 0.97);
+            backdrop-filter: blur(10px);
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo-text span:first-child {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        .nav-logo-text span:last-child {
+            font-size: 0.7rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--primary-dark) !important;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 700 !important;
+            transition: background 0.2s, transform 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-dark) !important;
+            color: var(--white) !important;
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 72px;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(245,166,35,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 40%);
+        }
+
+        .hero-grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-bolt {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.06;
+        }
+
+        .hero-bolt svg {
+            width: 500px;
+            height: 500px;
+            fill: var(--white);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 80px 5%;
+            max-width: 760px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245,166,35,0.15);
+            border: 1px solid rgba(245,166,35,0.4);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .hero-badge::before {
+            content: '⚡';
+            font-size: 0.9rem;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.78);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 580px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 16px 36px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s;
+            box-shadow: 0 4px 20px rgba(245,166,35,0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245,166,35,0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            transition: all 0.25s;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stat strong {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+        }
+
+        .hero-stat span {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 6px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* TRUST BAR */
+        .trust-bar {
+            background: var(--accent);
+            padding: 18px 5%;
+        }
+
+        .trust-bar-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+
+        .trust-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary-dark);
+            flex-shrink: 0;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 100px 5%;
+            background: var(--white);
+        }
+
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-features {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .about-feature-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(26,58,92,0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-feature-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary);
+        }
+
+        .about-feature-text strong {
+            display: block;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 3px;
+            font-size: 0.95rem;
+        }
+
+        .about-feature-text p {
+            font-size: 0.87rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .about-image-block {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            height: 440px;
+            background: linear-gradient(135deg, #1a3a5c, #0f2440);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image-main svg {
+            width: 200px;
+            height: 200px;
+            fill: rgba(255,255,255,0.07);
+        }
+
+        .about-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26,58,92,0.9), rgba(15,36,64,0.95));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .about-image-overlay .big-bolt {
+            font-size: 6rem;
+            filter: drop-shadow(0 0 30px rgba(245,166,35,0.6));
+        }
+
+        .about-image-overlay p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            padding: 0 40px;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -24px;
+            left: 32px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 18px 24px;
+            border-radius: 14px;
+            box-shadow: 0 8px 30px rgba(245,166,35,0.4);
+        }
+
+        .about-badge strong {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+        }
+
+        .about-badge span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 100px 5%;
+            background: var(--light);
+        }
+
+        .services-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 36px 30px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            border: 1.5px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(26,58,92,0.15);
+            border-color: rgba(26,58,92,0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(135deg, rgba(26,58,92,0.1), rgba(26,58,92,0.05));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .service-card ul li {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-card ul li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* PROCESS */
+        .process {
+            padding: 100px 5%;
+            background: var(--primary-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .process-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .process-header .section-label {
+            color: var(--accent);
+        }
+
+        .process-header .section-title {
+            color: var(--white);
+        }
+
+        .process-header .section-desc {
+            color: rgba(255,255,255,0.6);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), rgba(245,166,35,0.3));
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 72px;
+            height: 72px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 0 8px rgba(245,166,35,0.15);
+        }
+
+        .process-step h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .process-step p {
+            font-size: 0.87rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.6;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 100px 5%;
+            background: var(--white);
+        }
+
+        .testimonials-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .rating-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stars {
+            color: var(--accent);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+        }
+
+        .rating-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .rating-text strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 18px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s;
+            border: 1.5px solid var(--border);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border-color: rgba(26,58,92,0.15);
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--accent);
+            line-height: 0.5;
+            margin-bottom: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-size: 0.93rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .author-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .author-info strong {
+            display: block;
+            font-weight: 700;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .author-info span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* HOURS + CONTACT */
+        .info-section {
+            padding: 100px 5%;
+            background: var(--light);
+        }
+
+        .info-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 44px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+
+        .info-card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-card-title span {
+            font-size: 1.4rem;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.93rem;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list li .day {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .hours-list li .time {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .hours-list li .time.open {
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        .hours-list li .time.closed {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .emergency-badge {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .emergency-badge .emergency-icon {
+            font-size: 2rem;
+        }
+
+        .emergency-badge .emergency-text strong {
+            display: block;
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .emergency-badge .emergency-text span {
+            color: var(--primary-dark);
+            font-size: 0.83rem;
+            opacity: 0.8;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 14px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .contact-item:hover {
+            background: rgba(26,58,92,0.07);
+            transform: translateX(4px);
+        }
+
+        .contact-item-icon {
+            width: 46px;
+            height: 46px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item-text strong {
+            display: block;
+            font-weight: 700;
+            color: var(--text);
+            font-size: 0.87rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .contact-item-text span {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* MAP */
+        .map-section {
+            padding: 0 5% 100px;
+            background: var(--light);
+        }
+
+        .map-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 420px;
+            background: linear-gradient(135deg, #1a3a5c 0%, #2d5a8e 50%, #1a3a5c 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .map-pin {
+            font-size: 3.5rem;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+        }
+
+        .map-placeholder h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .map-placeholder p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .map-directions-btn {
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s;
+            margin-top: 8px;
+        }
+
+        .map-directions-btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 100px 5%;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 10% 50%, rgba(245,166,35,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        }
+
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .cta-inner h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .cta-inner p {
+            color: rgba(255,255,255,0.72);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #06131f;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin: 16px 0 24px;
+            max-width: 320px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.82rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255,255,255,0.35);
+            text-decoration: none;
+            font-size: 0.82rem;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent);
+        }
+
+        /* SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(245,166,35,0.4);
+            transition: all 0.25s;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(245,166,35,0.5);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                flex-direction: column;
+                padding: 24px 5%;
+                gap: 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 14px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+
+            .nav-links li:last-child a {
+                border-bottom: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-image-main {
+                height: 300px;
+            }
+
+            .about-badge {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                display: inline-block;
+                margin-top: 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .info-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .trust-bar-inner {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-card {
+                padding: 28px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">
+            <div class="nav-logo-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L4.09 12.92a1 1 0 00.81 1.58H11v7.5a.5.5 0 00.9.3L20.91 11.08a1 1 0 00-.81-1.58H14V2.5a.5.5 0 00-.9-.3z"/>
+                </svg>
+            </div>
+            <div class="nav-logo-text">
+                <span>West Electric, LLC</span>
+                <span>Licensed Electrician • CT</span>
+            </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="tel:+18605550100" class="nav-cta">Call Now</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-grid-lines"></div>
+        <div class="hero-bolt">
+            <svg viewBox="0 0 24 24"><path d="M13 2L4.09 12.92a1 1 0 00.81 1.58H11v7.5a.5.5 0 00.9.3L20.91 11.08a1 1 0 00-.81-1.58H14V2.5a.5.5 0 00-.9-.3z"/></svg>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Serving New Milford & Newtown, CT</div>
+            <h1>Expert Electrical<br>Solutions You Can<br><span>Trust & Rely On</span></h1>
+            <p>West Electric, LLC delivers professional residential and commercial electrical services across New Milford, Newtown, and surrounding Connecticut communities. Licensed, insured, and committed to your safety.</p>
+            <div class="hero-buttons">
+                <a href="tel:+18605550100" class="btn-primary">
+                    ⚡ Call Now for a Free Quote
+                </a>
+                <a href="#services" class="btn-secondary">
+                    View Our Services →
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <strong>4.8★</strong>
+                    <span>Average Rating</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>10+</strong>
+                    <span>Years Experience</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>500+</strong>
+                    <span>Jobs Completed</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>100%</strong>
+                    <span>Licensed & Insured</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>
+                Licensed & Insured
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+                CT State Certified
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Safety Guaranteed
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M13 2L4.09 12.92a1 1 0 00.81 1.58H11v7.5a.5.5 0 00.9.3L20.91 11.08a1 1 0 00-.81-1.58H14V2.5a.5.5 0 00-.9-.3z"/></svg>
+                24/7 Emergency Service
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+                Fast Response Times
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-inner">
+            <div class="about-text">
+                <div class="section-label">About West Electric</div>
+                <h2 class="section-title">Connecticut's Trusted<br><span>Electrical Experts</span></h2>
+                <p class="section-desc">West Electric, LLC is a locally owned and operated electrical contractor proudly serving New Milford, Newtown, and surrounding towns throughout Fairfield and Litchfield counties in Connecticut.</p>
+                <p class="section-desc">We bring professional craftsmanship, technical expertise, and a commitment to customer satisfaction to every project — whether it's a single outlet replacement or a full panel upgrade for a new home.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="about-feature-text">
+                            <strong>Fully Licensed & Insured</strong>
+                            <p>All work performed meets or exceeds Connecticut electrical code and safety standards.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                        </div>
+                        <div class="about-feature-text">
+                            <strong>Locally Owned & Operated</strong>
+                            <p>We're your neighbors — invested in the safety and quality of our community.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </div>
+                        <div class="about-feature-text">
+                            <strong>Upfront, Honest Pricing</strong>
+                            <p>No hidden fees or surprise charges — we provide clear estimates before starting work.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image-block">
+                <div class="about-image-main">
+                    <div class="about-image-overlay">
+                        <div class="big-bolt">⚡</div>
+                        <p>Professional electrical services delivered with precision and care across CT</p>
+                    </div>
+                </div>
+                <div class="about-badge">
+                    <strong>4.8★</strong>
+                    <span>Google Rated</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="services-inner">
+            <div class="services-header">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Complete <span>Electrical Services</span></h2>
+                <p class="section-desc" style="max-width:560px;margin:0 auto;">From routine repairs to complex installations, West Electric handles every electrical need for residential and commercial properties throughout the New Milford and Newtown area.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Residential Electrical</h3>
+                    <p>Complete home electrical services for new construction, renovations, and routine maintenance.</p>
+                    <ul>
+                        <li>Outlet & switch installation</li>
+                        <li>Lighting upgrades</li>
+                        <li>Ceiling fan installation</li>
+                        <li>Whole-home rewiring</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Panel Upgrades & Repairs</h3>
+                    <p>Modernize your electrical panel for improved safety, capacity, and energy efficiency.</p>
+                    <ul>
+                        <li>200-amp panel upgrades</li>
+                        <li>Circuit breaker replacement</li>
+                        <li>Load balancing</li>
+                        <li>Sub-panel installation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Commercial Electrical</h3>
+                    <p>Reliable electrical solutions for offices, retail spaces, and commercial properties.</p>
+                    <ul>
+                        <li>Commercial lighting</li>
+                        <li>Code compliance upgrades</li>
+                        <li>Power distribution</li>
+                        <li>Tenant improvements</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔌</div>
+                    <h3>EV Charger Installation</h3>
+                    <p>Professional Level 2 EV charging station installation for home or business use.</p>
+                    <ul>
+                        <li>Level 2 charger setup</li>
+                        <li>Dedicated circuit wiring</li>
+                        <li>All major EV brands</li>
+                        <li>Permit & inspection handling</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌞</div>
+                    <h3>Generator Installation</h3>
+                    <p>Whole-home and standby generator hookups to keep your power on during outages.</p>
+                    <ul>
+                        <li>Standby generator wiring</li>
+                        <li>Transfer switch installation</li>
+                        <li>Portable gen hookups</li>
+                        <li>Maintenance & service</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚨</div>
+                    <h3>Emergency Electrical</h3>
+                    <p>Fast, reliable emergency electrical service available when you need it most.</p>
+                    <ul>
+                        <li>Power outage diagnosis</li>
+                        <li>Tripped breaker repair</li>
+                        <li>Electrical hazard response</li>
+                        <li>Rapid same-day service</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process">
+        <div class="process-inner">
+            <div class="process-header">
+                <div class="section-label">How It Works</div>
+                <h2 class="section-title">Simple, Stress-Free Process</h2>
+                <p class="section-desc">From first contact to final inspection — we make electrical work easy and worry-free for every customer.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Contact Us</h4>
+                    <p>Call or message us to describe your electrical needs. We respond quickly and are always ready to help.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Free Estimate</h4>
+                    <p>We visit your property, assess the work needed, and provide a transparent, no-obligation quote.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Expert Work</h4>
+                    <p>Our licensed electricians complete the job safely, on time, and up to all Connecticut code standards.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Your Satisfaction</h4>
+                    <p>We walk you through everything completed and ensure you're fully satisfied before we leave.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-inner">
+            <div class="testimonials-header">
+                <div class="section-label">Customer Reviews</div>
+                <h2 class="section-title">What Our Customers <span>Are Saying</span></h2>
+                <div class="rating-display">
+                    <div class="stars">★★★★★</div>
+                    <div class="rating-text"><strong>4.8/5</strong> based on 8 Google Reviews</div>
+                </div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">West Electric did an outstanding job upgrading our electrical panel. Professional, on time, and cleaned up perfectly. The work passed inspection without any issues — highly recommend!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #1a3a5c, #2d5a8e);">MR</div>
+                        <div class="author-info">
+                            <strong>Michael R.</strong>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <span>New Milford, CT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Had an electrical emergency late in the evening and West Electric responded fast. Very knowledgeable and solved the problem quickly. Fair pricing for emergency work — will definitely use again.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #b45309, #d97706);">SL</div>
+                        <div class="author-info">
+                            <strong>Sarah L.</strong>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <span>Newtown, CT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Excellent service from start to finish. Got a quote the same day, work was scheduled promptly, and the EV charger installation looks great. Very clean work and professional attitude throughout.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #166534, #22c55e);">DK</div>
+                        <div class="author-info">
+                            <strong>David K.</strong>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <span>Sandy Hook, CT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">We hired West Electric for a complete kitchen renovation rewire. They coordinated perfectly with our contractor and the work was impeccable. No shortcuts taken — very thorough and trustworthy.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">JP</div>
+                        <div class="author-info">
+                            <strong>Jennifer P.</strong>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <span>New Milford, CT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Installed a whole-home generator hookup and transfer switch for us. They made the process seamless and took care of all the permits. Couldn't be happier — great peace of mind heading into winter!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #dc2626, #f97316);">TM</div>
+                        <div class="author-info">
+                            <strong>Tom M.</strong>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <span>Brookfield, CT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Great local company! They upgraded our service entrance and added several new circuits for our home office. Price was fair, crew was friendly, and they respected our home. Five stars all around.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #0891b2, #06b6d4);">AC</div>
+                        <div class="author-info">
+                            <strong>Amanda C.</strong>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <span>Newtown, CT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO: HOURS + CONTACT -->
+    <section class="info-section" id="contact">
+        <div class="info-inner">
+            <div class="info-card">
+                <div class="info-card-title">
+                    <span>🕐</span> Business Hours
+                </div>
+                <ul class="hours-list">
+                    <li>
+                        <span class="day">Monday</span>
+                        <span class="time open">7:00 AM – 6:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Tuesday</span>
+                        <span class="time open">7:00 AM – 6:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Wednesday</span>
+                        <span class="time open">7:00 AM – 6:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Thursday</span>
+                        <span class="time open">7:00 AM – 6:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Friday</span>
+                        <span class="time open">7:00 AM – 6:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Saturday</span>
+                        <span class="time open">8:00 AM – 4:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Sunday</span>
+                        <span class="time closed">Closed</span>
+                    </li>
+                </ul>
+                <div class="emergency-badge">
+                    <div class="emergency-icon">🚨</div>
+                    <div class="emergency-text">
+                        <strong>24/7 Emergency Service Available</strong>
+                        <span>Call anytime for urgent electrical issues</span>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">
+                    <span>📬</span> Get In Touch
+                </div>
+                <div class="contact-items">
+                    <a href="tel:+18605550100" class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div class="contact-item-text">
+                            <strong>Call Us</strong>
+                            <span>Request a Free Estimate</span>
+                        </div>
+                    </a>
+                    <a href="mailto:info@westelectricllc.com" class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div class="contact-item-text">
+                            <strong>Email Us</strong>
+                            <span>info@westelectricllc.com</span>
+                        </div>
+                    </a>
+                    <a href="https://maps.google.com/?q=New+Milford+CT" target="_blank" class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-text">
+                            <strong>Service Area</strong>
+                            <span>New Milford & Newtown, CT</span>
+                        </div>
+                    </a>
+                    <div class="contact-item" style="cursor:default;">
+                        <div class="contact-item-icon">🌐</div>
+                        <div class="contact-item-text">
+                            <strong>Service Area Coverage</strong>
+                            <span>Fairfield & Litchfield Counties, CT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="map-section">
+        <div class="map-inner">
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-pin">📍</div>
+                    <h3>New Milford & Newtown, Connecticut</h3>
+                    <p>Serving Fairfield & Litchfield Counties and surrounding towns</p>
+                    <a href="https://maps.google.com/?q=New+Milford+CT" target="_blank" class="map-directions-btn">
+                        🗺️ Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2>Ready to Get Started? ⚡</h2>
+            <p>Contact West Electric, LLC today for a free estimate on any residential or commercial electrical project. Serving New Milford, Newtown, and all of Fairfield & Litchfield Counties.</p>
+            <div class="cta-buttons">
+                <a href="tel:+18605550100" class="btn-primary">
+                    📞 Call Now – Free Quote
+                </a>
+                <a href="#services" class="btn-secondary">
+                    Explore Our Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo" style="display:inline-flex;">
+                        <div class="nav-logo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M13 2L4.09 12.92a1 1 0 00.81 1.58H11v7.5a.5.5 0 00.9.3L20.91 11.08a1 1 0 00-.81-1.58H14V2.5a.5.5 0 00-.9-.3z"/></svg>
+                        </div>
+                        <div class="nav-logo-text">
+                            <span>West Electric, LLC</span>
+                            <span>Licensed Electrician • CT</span>
+                        </div>
+                    </a>
+                    <p>West Electric, LLC is your trusted local electrician serving New Milford, Newtown, and surrounding Connecticut communities. Professional, reliable, and dedicated to your safety.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-btn">f</a>
+                        <a href="#" class="social-btn">in</a>
+                        <a href="#" class="social-btn">g</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Residential Electrical</a></li>
+                        <li><a href="#services">Panel Upgrades</a></li>
+                        <li><a href="#services">Commercial Electrical</a></li>
+                        <li><a href="#services">EV Charger Installation</a></li>
+                        <li><a href="#services">Generator Hookups</a></li>
+                        <li><a href="#services">Emergency Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Service Areas</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">New Milford, CT</a></li>
+                        <li><a href="#">Newtown, CT</a></li>
+                        <li><a href="#">Sandy Hook, CT</a></li>
+                        <li><a href="#">Brookfield, CT</a></li>
+                        <li><a href="#">Bridgewater, CT</a></li>
+                        <li><a href="#">Sherman, CT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 West Electric, LLC. All rights reserved. | Licensed Electrical Contractor | State of Connecticut</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TOP -->
+    <a href="#home" class="scroll-top">↑</a>
+
+    <script>
+        function toggleNav() {
+            const links = document.getElementById('navLinks');
+            links.classList.toggle('open');
+        }
+
+        // Close nav on link click
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // Smooth scroll offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Show/hide scroll button
+        const scrollBtn = document.querySelector('.scroll-top');
+        window.addEventListener('scroll', () => {
+            scrollBtn.style.opacity = window.scrollY > 400 ? '1' : '0';
+            scrollBtn.style.pointerEvents = window.scrollY > 400 ? 'all' : 'none';
+        });
+        scrollBtn.style.opacity = '0';
+        scrollBtn.style.transition = 'opacity 0.3s';
+    </script>
+
+</body>
+</html>
